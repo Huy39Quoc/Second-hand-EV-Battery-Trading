@@ -38,6 +38,14 @@ public class Product {
     @Column(name = "model")
     private String model;
 
+    //Two-wheel EV, Car EV, Battery
+    @Column(name = "type")
+    private String type;
+
+    //Thong so ki thuat
+    @Column(name = "specs")
+    private String specs;
+
     @Column(name = "createdat")
     private Date createdat;
 
@@ -57,15 +65,15 @@ public class Product {
     @OneToOne(mappedBy = "products")
     private Brandbattery  brandbattery;
 
-    @OneToOne(mappedBy = "products")
-    private cart_items cart_item;
+    @OneToMany(mappedBy = "products")
+    private List<cart_items> cart_item = new ArrayList<>();
 
-    @OneToOne(mappedBy = "products")
-    private Feedback feedbacks;
+    @OneToMany(mappedBy = "products")
+    private List<Feedback> feedbacks = new ArrayList<>();
 
     @OneToOne(mappedBy = "products")
     private Post posts;
 
-    @OneToOne(mappedBy = "products")
-    private Order_detail order_detail;
+    @OneToMany(mappedBy = "products")
+    private List<Order_detail> order_detail = new ArrayList<>();
 }

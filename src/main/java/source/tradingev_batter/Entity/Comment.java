@@ -23,8 +23,8 @@ public class Comment {
     @Column(name = "text")
     private String text;
 
-    @Column(name = "createdat")
-    private Date createdat;
+    @Column(name = "created_at")
+    private Date created_at;
 
     @ManyToOne
     @JoinColumn(name = "parent_cmt_id")
@@ -36,4 +36,8 @@ public class Comment {
     @ManyToOne
     @JoinColumn(name = "postid")
     private Post posts;
+
+    @ManyToOne
+    @JoinColumn(name = "userid")
+    private User users;
 }

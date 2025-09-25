@@ -26,10 +26,8 @@ public class Order_detail {
     @JoinColumn(name = "orderid")
     private Order orders;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "productid")
     private Product products;
 
-    @OneToOne(mappedBy = "order_detail")
-    private Chatroom chatroom;
 }

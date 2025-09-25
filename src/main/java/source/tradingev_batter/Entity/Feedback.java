@@ -24,18 +24,18 @@ public class Feedback {
     @Column(name = "comment")
     private String comment;
 
-    @Column(name = "createdat")
-    private Date createdat;
+    @Column(name = "created_at")
+    private Date created_at;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "orderid")
     private Order orders;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "productid")
     private Product products;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "write_by")
     private User users;
 }

@@ -42,7 +42,7 @@ public class Contracts {
     @Column(name = "status")
     private boolean status;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "orderid")
     private Order orders;
 
@@ -53,4 +53,8 @@ public class Contracts {
     @ManyToOne
     @JoinColumn(name = "sellerid")
     private User sellers;
+
+    @ManyToOne
+    @JoinColumn(name = "created_by")
+    private User admins;
 }

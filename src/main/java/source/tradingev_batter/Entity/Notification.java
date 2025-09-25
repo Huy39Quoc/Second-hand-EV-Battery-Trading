@@ -24,8 +24,8 @@ public class Notification {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "createdtime")
-    private Date createdtime;
+    @Column(name = "created_time")
+    private Date created_time;
 
     @ManyToOne
     @JoinColumn(name = "userid")

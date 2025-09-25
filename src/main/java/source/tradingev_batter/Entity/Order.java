@@ -44,11 +44,11 @@ public class Order {
     @Column(name = "status")
     private String status;
 
-    @OneToOne(mappedBy = "orders")
-    private Contracts  contracts;
+    @OneToMany(mappedBy = "orders")
+    private List<Contracts>  contracts = new ArrayList<>();
 
-    @OneToOne(mappedBy = "orders")
-    private Feedback feedbacks;
+    @OneToMany(mappedBy = "orders")
+    private List<Feedback> feedbacks = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "buyerid")
@@ -60,6 +60,13 @@ public class Order {
     @OneToMany(mappedBy = "orders")
     private List<Transaction> transactions = new ArrayList<>();
 
-    @OneToOne(mappedBy = "orders")
-    private Refund refunds;
+    @OneToMany(mappedBy = "orders")
+    private List<Refund> refunds = new ArrayList<>();
+
+    @OneToMany(mappedBy = "orders")
+    private List<Chatroom> chatroom = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "addressid")
+    private Address address;
 }

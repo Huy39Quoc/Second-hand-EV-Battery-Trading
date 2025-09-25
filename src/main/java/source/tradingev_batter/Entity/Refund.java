@@ -30,7 +30,7 @@ public class Refund {
     @Column(name = "createdat")
     private Date createdat;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "orderid")
     private Order orders;
 }

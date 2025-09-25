@@ -18,7 +18,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "userid", nullable = false)
-    private long id;
+    private long userid;
 
     @Column(name = "username", nullable = false)
     private String username;
@@ -41,11 +41,11 @@ public class User {
     @Column(name = "displayname")
     private String displayname;
 
-    @Column(name = "createdat",   nullable = false)
-    private Date createdat;
+    @Column(name = "created_at",   nullable = false)
+    private Date created_at;
 
-    @Column(name = "updatedat")
-    private Date updatedat;
+    @Column(name = "updated_at")
+    private Date updated_at;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
@@ -64,14 +64,11 @@ public class User {
     @OneToMany(mappedBy = "users")
     private List<Notification> notifications = new ArrayList<>();
 
-//    @OneToMany(mappedBy = "user")
-//    private List<Carts> carts = new ArrayList<>();
-
     @OneToOne(mappedBy = "users")
     private Carts carts;
 
-    @OneToOne(mappedBy = "users")
-    private cart_items cart_items;
+    @OneToMany(mappedBy = "users")
+    private List<cart_items> cart_items = new ArrayList<>();
 
     @OneToMany(mappedBy = "buyers")
     private List<Contracts> buyerContracts = new ArrayList<>();
@@ -79,22 +76,14 @@ public class User {
     @OneToMany(mappedBy = "sellers")
     private List<Contracts> sellerContracts = new ArrayList<>();
 
-    @OneToOne(mappedBy = "users")
-    private Feedback feedbacks;
+    @OneToMany(mappedBy = "users")
+    private List<Feedback> feedbacks = new ArrayList<>();
 
-    @OneToOne(mappedBy = "users")
-    private Post posts;
+    @OneToMany(mappedBy = "users")
+    private List<Post> posts = new ArrayList<>();;
 
-    @OneToOne(mappedBy = "userReviewed")
-    private Post userReviewed;
-
-    @ManyToMany
-    @JoinTable(
-            name = "like_post",
-            joinColumns = @JoinColumn(name = "userid"),
-            inverseJoinColumns = @JoinColumn(name = "favoriteid")
-    )
-    private List<Favorite_post> favorite_posts =  new ArrayList<>();
+    @OneToMany(mappedBy = "userReviewed")
+    private List<Post> userReviewed = new ArrayList<>();
 
     @OneToMany(mappedBy = "users")
     private List<Order> orders = new ArrayList<>();
@@ -102,9 +91,24 @@ public class User {
     @OneToMany(mappedBy = "createdBy")
     private List<Transaction> transactions = new ArrayList<>();
 
-    @OneToOne(mappedBy = "buyer")
-    private Chatroom chatroomBuyer;
+    @OneToMany(mappedBy = "buyer")
+    private List<Chatroom> chatroomBuyer = new ArrayList<>();
 
-    @OneToOne(mappedBy = "seller")
-    private Chatroom chatroomSeller;
+    @OneToMany(mappedBy = "seller")
+    private List<Chatroom> chatroomSeller = new ArrayList<>();
+
+    @OneToMany(mappedBy = "admins")
+    private List<Contracts> contracts = new ArrayList<>();
+
+    @OneToMany(mappedBy = "users")
+    private List<Comment> comments = new ArrayList<>();
+
+    @OneToMany(mappedBy = "users")
+    private List<Favorite_post> favorite_posts = new ArrayList<>();
+
+    @OneToMany(mappedBy = "buyerid")
+    private List<Message> buyer = new ArrayList<>();
+
+    @OneToMany(mappedBy = "sellerid")
+    private List<Message> seller = new ArrayList<>();
 }

@@ -20,13 +20,14 @@ public class Favorite_post {
     @Column(name = "favoriteid")
     private long favoriteid;
 
-    @Column(name = "createdat")
-    private Date createdat;
+    @Column(name = "created_at")
+    private Date created_at;
 
-    @ManyToMany(mappedBy = "favorite_posts")
-    private List<User> users = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "userid")
+    private User users;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "postid")
     private Post posts;
 }

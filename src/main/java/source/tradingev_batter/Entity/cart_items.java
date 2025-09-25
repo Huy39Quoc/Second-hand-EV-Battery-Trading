@@ -28,11 +28,11 @@ public class cart_items {
     @JoinColumn(name = "cartsid")
     private Carts carts;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "productid")
     private Product products;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "userid")
     private User users;
 }

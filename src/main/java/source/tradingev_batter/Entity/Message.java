@@ -21,7 +21,15 @@ public class Message {
     @Column(name = "createdat")
     private Date createdat;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "roomid")
     private Chatroom  chatroom;
+
+    @ManyToOne
+    @JoinColumn(name = "buyerid")
+    private User buyerid;
+
+    @ManyToOne
+    @JoinColumn(name = "sellerid")
+    private User sellerid;
 }

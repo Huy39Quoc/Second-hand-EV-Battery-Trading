@@ -29,11 +29,11 @@ public class Post {
     @Column(name = "status")
     private String status;
 
-    @Column(name = "createdat")
-    private Date createdat;
+    @Column(name = "created_at")
+    private Date created_at;
 
-    @Column(name = "updatedat")
-    private Date updatedat;
+    @Column(name = "updated_at")
+    private Date updated_at;
 
     @OneToMany(mappedBy = "posts")
     private List<Comment> comments = new ArrayList<>();
@@ -42,14 +42,14 @@ public class Post {
     @JoinColumn(name = "posts")
     private Product products;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "created_by")
     private User users;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "reviewed_by")
     private User userReviewed;
 
-    @OneToOne(mappedBy = "posts")
-    private Favorite_post favorite_post;
+    @OneToMany(mappedBy = "posts")
+    private List<Favorite_post> favorite_post = new ArrayList<>();
 }

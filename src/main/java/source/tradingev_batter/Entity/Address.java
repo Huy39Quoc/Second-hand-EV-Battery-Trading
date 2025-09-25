@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "addresses")
 @Data
@@ -34,4 +37,7 @@ public class Address {
     @ManyToOne
     @JoinColumn(name = "userid")
     private User users;
+
+    @OneToMany(mappedBy = "address")
+    private List<Order> orderList = new ArrayList<>();
 }

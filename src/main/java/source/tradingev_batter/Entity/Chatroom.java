@@ -5,7 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "chatroom")
@@ -21,18 +23,18 @@ public class Chatroom {
     @Column(name = "createdat")
     private Date createdat;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "buyerid")
     private User buyer;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "sellerid")
     private User seller;
 
-    @OneToOne
-    @JoinColumn(name = "order_detailid")
-    private Order_detail order_detail;
+    @ManyToOne
+    @JoinColumn(name = "order")
+    private Order orders;
 
-    @OneToOne(mappedBy = "chatroom")
-    private Message message;
+    @OneToMany(mappedBy = "chatroom")
+    private List<Message> message = new ArrayList<>();
 }
